@@ -168,6 +168,7 @@
 				TargetAttributes = {
 					0EBA727E1AF9AC980055B3A8 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = N3KGXBC4JJ;
 					};
 					0EBA72971AF9AC980055B3A8 = {
 						CreatedOnToolsVersion = 6.2;
@@ -343,7 +344,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: 91 Financial Information Service (Beijing) Co., Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: 91 Financial Information Service (Beijing) Co., Ltd.";
 				INFOPLIST_FILE = TounchID/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -357,7 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: 91 Financial Information Service (Beijing) Co., Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: 91 Financial Information Service (Beijing) Co., Ltd.";
 				INFOPLIST_FILE = TounchID/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -420,6 +421,7 @@
 				0EBA72A41AF9AC980055B3A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0EBA72A51AF9AC980055B3A8 /* Build configuration list for PBXNativeTarget "TounchIDTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +430,7 @@
 				0EBA72A71AF9AC980055B3A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

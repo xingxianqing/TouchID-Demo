@@ -8,16 +8,25 @@
 
 #import "ViewController.h"
 #import <LocalAuthentication/LocalAuthentication.h>
-@interface ViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *stateLable;//显示状态的标签
 
+//设备高度
+#define ScreenHeight  [UIScreen mainScreen].bounds.size.height
+//设备宽度
+#define ScreenWidth  [UIScreen mainScreen].bounds.size.width
+//颜色
+#define COLOR(R, G, B, A)  [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
+
+@interface ViewController ()<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *stateLable;//显示状态的标签
+@property(nonatomic,strong)UIView* backView;
+@property(nonatomic,strong)NSMutableArray* array;
+@property(nonatomic,copy)NSString* password;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 //检测touchID是否可用
 - (IBAction)isTouchIDAvailable:(UIButton *)sender {
@@ -48,28 +57,130 @@
                     NSLog(@"TouchID 验证成功");
                     self.stateLable.text = @"TouchID 验证成功";
                 }else{
-                    self.stateLable.text = @"";
+                    //点击取消按钮  code = -2
+                    if(error.code == -2){
+                        self.stateLable.text = @"";
+                        return;
+                    }
+                    //点击输入密码按钮   code = -3
+                    if (error.code == -3) {
+                        self.stateLable.text = @"";
+                        //输入密码弹窗
+                        [self CreatPopupViewAction];
+                        return;
+                    }
                     [self showAlert:[NSString stringWithFormat:@"TouchID  验证失败   error:%@",error]];
                 }
-
             });
         }];
         
     }else{
         self.stateLable.text = @"";
         [self showAlert:[NSString stringWithFormat:@"TouchID 不可用   error:%@",errorMessage]];
-       
     }
-    
 }
 
 -(void)showAlert:(NSString*)message{
     UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@" " message:message delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
     [alert show];
 }
+//弹出视图
+-(void)CreatPopupViewAction{
+    self.array=[NSMutableArray array];
+    self.backView=[[UIView alloc]initWithFrame:self.view.bounds];
+    self.backView.backgroundColor=COLOR(0, 0, 0, 0.6);
+    [self.view addSubview:self.backView];
+    
+    
+    UIView * view=[[UIView alloc]initWithFrame:CGRectMake(ScreenWidth/2-140, ScreenHeight/2-140, 280, 140)];
+    view.layer.cornerRadius=8;
+    view.layer.borderWidth=1;
+    view.layer.borderColor=COLOR(153, 153, 153, 1.0).CGColor;
+    view.backgroundColor=[UIColor whiteColor];
+    
+    UILabel* title=[[UILabel alloc]initWithFrame:CGRectMake(10, 5, view.frame.size.width-20, 30)];
+    [title setText:@"请输入密码"];
+    [view addSubview:title];
+    
+    UILabel* borderLable=[[UILabel alloc]initWithFrame:CGRectMake(0, 40, view.frame.size.width, 0.5)];
+    borderLable.backgroundColor=COLOR(153, 153, 153, 0.3);
+    [view addSubview:borderLable];
+    
+    UIView * contentView=[[UIView alloc]initWithFrame:CGRectMake(view.frame.size.width/2-120,view.frame.size.height-70, 240, 40)];
+    contentView.layer.borderWidth=1;
+    contentView.layer.borderColor=COLOR(153, 153, 153, 1.0).CGColor;
+    contentView.userInteractionEnabled=NO;
+    
+    UITextField* textField=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, 240, 40)];
+    textField.delegate=self;
+    [textField addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventEditingChanged];
+    textField.textColor=[UIColor clearColor];
+    textField.keyboardType=UIKeyboardTypeNumberPad;
+    textField.secureTextEntry=YES;
+    textField.tintColor=[UIColor clearColor];
+    textField.textAlignment=NSTextAlignmentCenter;
+    [contentView addSubview:textField];
+    
+    for (int i=0; i<6; i++) {
+        if (i>0) {
+            UILabel* lable=[[UILabel  alloc]initWithFrame:CGRectMake(i*40, 0, 0.5, contentView.frame.size.height)];
+            lable.backgroundColor=COLOR(153, 153, 153, 0.5);
+            [contentView addSubview:lable];
+        }
+        UITextField* textField=[[UITextField alloc]initWithFrame:CGRectMake(i*40, 0, 40, 40)];
+        textField.delegate=self;
+        textField.tag=i;
+        [textField setFont:[UIFont systemFontOfSize:22]];
+        textField.keyboardType=UIKeyboardTypeNumberPad;
+        textField.secureTextEntry=YES;
+        textField.tintColor=[UIColor clearColor];
+        textField.textAlignment=NSTextAlignmentCenter;
+        [self.array addObject:textField];
+        [contentView addSubview:textField];
+    }
+    [textField becomeFirstResponder];
+    [view addSubview:contentView];
+    [self.backView addSubview:view];
+    
+}
+//密码框事件
+- (void)valueChanged:(UITextField *)textField{
+    
+    if (textField.text.length<=6) {
+        
+        self.password=textField.text;
+        for (int i = 0; i<6; i++) {
+            UITextField* text = self.array[i];
+            text.text=@"";
+        }
+        for (int i = 0; i<self.password.length; i++) {
+            UITextField* text = self.array[i];
+            text.text=@"*";
+        }
+        
+        if (self.password.length==6) {
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                sleep(1);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (self.password.length==6) {
+                        [textField resignFirstResponder];
+                        [self.backView removeFromSuperview];
+                        //[self.popupView removeFromSuperview];
+                        self.backView=nil;
+                        //self.popupView=nil;
+                        
+                    }
+                });
+            });
+        }
+    }else {
+        textField.text = [textField.text substringToIndex:6];
+    }
+}
 
 /*
- 验证失败结果  其中的几种
+ 指纹验证失败结果  其中的几种
  
  1. 连续三次指纹识别错误的运行结果：
  
@@ -100,17 +211,6 @@
  Error Domain=com.apple.LocalAuthentication Code=-3 "Fallback authentication mechanism selected." UserInfo=0x17407e040 {NSLocalizedDescription=Fallback authentication mechanism selected.}
  
  */
-
-
-
-
-
-
-
-
-
-
-
 
 
 - (void)didReceiveMemoryWarning {
