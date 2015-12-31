@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E6BB5981C3516A6005A1197 /* TouchID.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BB5971C3516A6005A1197 /* TouchID.m */; };
 		0EBA72851AF9AC980055B3A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA72841AF9AC980055B3A8 /* main.m */; };
 		0EBA72881AF9AC980055B3A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA72871AF9AC980055B3A8 /* AppDelegate.m */; };
 		0EBA728B1AF9AC980055B3A8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA728A1AF9AC980055B3A8 /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E6BB5961C3516A6005A1197 /* TouchID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchID.h; sourceTree = "<group>"; };
+		0E6BB5971C3516A6005A1197 /* TouchID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchID.m; sourceTree = "<group>"; };
 		0EBA727F1AF9AC980055B3A8 /* TounchID.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TounchID.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EBA72831AF9AC980055B3A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EBA72841AF9AC980055B3A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E6BB5991C351C4B005A1197 /* Touch ID */ = {
+			isa = PBXGroup;
+			children = (
+				0E6BB5961C3516A6005A1197 /* TouchID.h */,
+				0E6BB5971C3516A6005A1197 /* TouchID.m */,
+			);
+			name = "Touch ID";
+			sourceTree = "<group>";
+		};
 		0EBA72761AF9AC980055B3A8 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +93,7 @@
 		0EBA72811AF9AC980055B3A8 /* TounchID */ = {
 			isa = PBXGroup;
 			children = (
+				0E6BB5991C351C4B005A1197 /* Touch ID */,
 				0EBA72861AF9AC980055B3A8 /* AppDelegate.h */,
 				0EBA72871AF9AC980055B3A8 /* AppDelegate.m */,
 				0EBA72891AF9AC980055B3A8 /* ViewController.h */,
@@ -220,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E6BB5981C3516A6005A1197 /* TouchID.m in Sources */,
 				0EBA728B1AF9AC980055B3A8 /* ViewController.m in Sources */,
 				0EBA72881AF9AC980055B3A8 /* AppDelegate.m in Sources */,
 				0EBA72851AF9AC980055B3A8 /* main.m in Sources */,
@@ -344,13 +358,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: 91 Financial Information Service (Beijing) Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: 91 Financial Information Service (Beijing) Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TounchID/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a127cdfe-e4c0-467c-879d-0404af2bd318";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -358,13 +372,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: 91 Financial Information Service (Beijing) Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: 91 Financial Information Service (Beijing) Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TounchID/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a127cdfe-e4c0-467c-879d-0404af2bd318";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

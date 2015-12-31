@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +24,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="CqI-Qt-c1Y"/>
                                 </constraints>
-                                <state key="normal" title="Touch ID">
+                                <state key="normal" title="检测Touch ID是否可用">
                                     <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -50,6 +50,22 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQ2-2h-LSw">
+                                <rect key="frame" x="12" y="287" width="296" height="45"/>
+                                <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="5k1-ck-Ted"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="ghA-wC-2h0"/>
+                                </constraints>
+                                <state key="normal" title="验证Touch ID">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="isTouchIDAvailable:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4JW-xR-s6S"/>
+                                    <action selector="verify:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="oht-1g-iTb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -57,11 +73,14 @@
                             <constraint firstItem="kWT-9b-ge5" firstAttribute="top" secondItem="A8h-8J-aPe" secondAttribute="bottom" constant="17" id="8aT-iE-NFg"/>
                             <constraint firstItem="kWT-9b-ge5" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Bh9-FT-8Fy"/>
                             <constraint firstItem="A8h-8J-aPe" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="73" id="KPT-uV-Hmh"/>
+                            <constraint firstItem="eQ2-2h-LSw" firstAttribute="top" secondItem="b31-qw-ljj" secondAttribute="bottom" constant="37" id="Men-50-gm8"/>
                             <constraint firstItem="A8h-8J-aPe" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Qc9-97-DUG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eQ2-2h-LSw" secondAttribute="trailing" constant="-4" id="SHn-wm-y1I"/>
                             <constraint firstItem="kWT-9b-ge5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="YGL-KI-JGk"/>
                             <constraint firstItem="b31-qw-ljj" firstAttribute="top" secondItem="A8h-8J-aPe" secondAttribute="bottom" constant="72" id="etE-le-LpH"/>
                             <constraint firstItem="A8h-8J-aPe" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="jAd-vh-22q"/>
                             <constraint firstItem="b31-qw-ljj" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="wMH-xg-xUF"/>
+                            <constraint firstItem="eQ2-2h-LSw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="zvb-ub-Jql"/>
                         </constraints>
                     </view>
                     <connections>
@@ -73,9 +92,4 @@
             <point key="canvasLocation" x="153" y="157"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
